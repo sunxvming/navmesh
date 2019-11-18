@@ -45,6 +45,7 @@ Polygon
   restrains // 存放着所有的约束边，在处理开始就已经知道
  // 寻路
  FindPath()
+ 
 // 多边形对应的网格结构类，由纵横的线分割的Cell（格子）组成
 Grid
  vector<Cell> cells;
