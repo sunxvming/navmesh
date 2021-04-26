@@ -104,4 +104,5 @@ Circle
 * [平面多边形域的快速约束Delaunay三角化](https://github.com/sunxvming/navmesh/blob/master/doc/%E5%B9%B3%E9%9D%A2%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%9F%9F%E7%9A%84%E5%BF%AB%E9%80%9F%E7%BA%A6%E6%9D%9FDelaunay%E4%B8%89%E8%A7%92%E5%8C%96.pdf)
 * [Nav导航网格寻路](https://blog.csdn.net/ynnmnm/article/details/44833007)
 * [深入理解游戏中寻路算法](https://my.oschina.net/u/1859679/blog/1486636)
+* [Astar寻路算法-中文](https://github.com/sunxvming/navmesh/blob/master/doc/Astar%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95-%E4%B8%AD%E6%96%87.doc)
  
