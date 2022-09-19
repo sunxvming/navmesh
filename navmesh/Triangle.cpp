@@ -1,5 +1,5 @@
 //====================================
-// brief: TriangleÀà£¬Èý½ÇÐÎµÄ±íÊ¾Àà
+// brief: Triangleç±»ï¼Œä¸‰è§’å½¢çš„è¡¨ç¤ºç±»
 // author:sunxvming@163.com
 // date:  2019-11-15
 //====================================
@@ -40,7 +40,7 @@ void Triangle::GenExtData(Polygon* p)
 int Triangle::Contain(Polygon* p, Point pt)
 {
 	double x = pt.x, y = pt.y;
-	//¿ìËÙÅÅ²é
+	//å¿«é€ŸæŽ’æŸ¥
 	if (x < lt.x) return 0;
 	if (x > rb.x) return 0;
 	if (y < lt.y) return 0;
@@ -54,7 +54,7 @@ int Triangle::Contain(Polygon* p, Point pt)
 	Point v1 = pt2 - pt1;
 	Point v2 = pt - pt1;
 
-	//P = A +  u * (C ¨C A) + v * (B - A)  Âú×ã u + v <=1 u >= 0 v >= 0
+	//P = A +  u * (C â€“ A) + v * (B - A)  æ»¡è¶³ u + v <=1 u >= 0 v >= 0
 	double dot00 = v0.Dot(v0);
 	double dot01 = v0.Dot(v1);
 	double dot02 = v0.Dot(v2);

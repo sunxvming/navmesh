@@ -1,5 +1,5 @@
 //====================================
-// brief: TriangleÀà£¬Èı½ÇĞÎµÄ±íÊ¾Àà
+// brief: Triangleç±»ï¼Œä¸‰è§’å½¢çš„è¡¨ç¤ºç±»
 // author:sunxvming@163.com
 // date:  2019-11-15
 //====================================
@@ -17,7 +17,7 @@ public:
 	int p2;
 	int p3;
 	int edges[3];
-	Point icenter;//ÖØĞÄ
+	Point icenter;//é‡å¿ƒ
 	Point lt;
 	Point rb;
 public:

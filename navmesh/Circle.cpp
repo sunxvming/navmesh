@@ -1,5 +1,5 @@
 //====================================
-// brief: CircleÀà£¬±íÊ¾Ô²
+// brief: Circleç±»ï¼Œè¡¨ç¤ºåœ†
 // author:sunxvming@163.com
 // date:  2019-11-15
 //====================================
@@ -11,7 +11,7 @@ Circle::Circle( Point p1, Point p2, Point p3)
 	double x1 = p1.x, y1 = p1.y;
 	double x2 = p2.x, y2 = p2.y;
 	double x3 = p3.x, y3 = p3.y;
-	//ÇóÍâ½ÓÔ²Ô²ÐÄ  
+	//æ±‚å¤–æŽ¥åœ†åœ†å¿ƒ  
 	double t1 = x1*x1 + y1*y1;
 	double t2 = x2*x2 + y2*y2;
 	double t3 = x3*x3 + y3*y3;

@@ -1,5 +1,5 @@
 //====================================
-// brief: ³ÌĞòµÄmainÈë¿ÚÎÄ¼ş£¬µ÷ÓÃglut¿âÀ´»­¾­¹ıÈı½ÇÆÊ·ÖºóµÄ¶à±ßĞÎÍø¸ñºÍÑ°Â·µÄÂ·¾¶
+// brief: ç¨‹åºçš„mainå…¥å£æ–‡ä»¶ï¼Œè°ƒç”¨glutåº“æ¥ç”»ç»è¿‡ä¸‰è§’å‰–åˆ†åçš„å¤šè¾¹å½¢ç½‘æ ¼å’Œå¯»è·¯çš„è·¯å¾„
 // author:sunxvming@163.com
 // date:  2019-11-16
 //====================================
@@ -16,7 +16,7 @@ int toy  = -1;
 int clicknum = 0;
 
 
-// ¸ù¾İÊäÈëµÄµã´´½¨¶à±ßĞÎ£¬¸ù¾İÊó±êµã»÷µÄµã×÷ÎªÆğµãÊäÖÕµãÀ´½øĞĞÑ°Â·£¬²¢»æÖÆÍø¸ñºÍÂ·¾¶Í¼Ïñ
+// æ ¹æ®è¾“å…¥çš„ç‚¹åˆ›å»ºå¤šè¾¹å½¢ï¼Œæ ¹æ®é¼ æ ‡ç‚¹å‡»çš„ç‚¹ä½œä¸ºèµ·ç‚¹è¾“ç»ˆç‚¹æ¥è¿›è¡Œå¯»è·¯ï¼Œå¹¶ç»˜åˆ¶ç½‘æ ¼å’Œè·¯å¾„å›¾åƒ
 static void DrawLines() {
 	double pos[] = { 50,50,275,100,425,60,450,160,350,230, 600, 325, 750,200,750,500, 525,460,575,550,425,550,480,450,325,425,300,300,30,400,85,275 };
 	//double pos[] = { 0, 126 ,119,118,158,0 ,200,122, 317,120 ,224,201, 260, 317, 163, 245, 65, 316, 99, 196 };
@@ -24,18 +24,18 @@ static void DrawLines() {
 	//double pos[] = {50, 150,150,100,200,100,250,200, 300, 150,250,250,200,250,150,200,150,150,50,250};
 	vector<Point> ways;
 	Polygon* p = new Polygon(pos, sizeof(pos)/sizeof(double));
-	//Ç°Ò»¸öPointÊÇÆğµã£¬ºóÒ»¸öPointÊÇÖÕµã¡£
-	//£¨0£¬0£©ÔÚ×øÉÏ½Ç
+	//å‰ä¸€ä¸ªPointæ˜¯èµ·ç‚¹ï¼Œåä¸€ä¸ªPointæ˜¯ç»ˆç‚¹ã€‚
+	//ï¼ˆ0ï¼Œ0ï¼‰åœ¨åä¸Šè§’
 	if (fromx > 0 && fromy > 0 && tox > 0 && toy > 0)
 	{
 		ways = p->FindPath(Point(fromx, fromy), Point(tox, toy));
 	}
 
 	glEnable(GL_LINE_STIPPLE);
-	glLineWidth(2);//ÉèÖÃÏß¶Î¿í¶È
+	glLineWidth(2);//è®¾ç½®çº¿æ®µå®½åº¦
 	glBegin(GL_LINES);
 
-	//¸¨ÖúµÄ¸ñ×ÓÏß
+	//è¾…åŠ©çš„æ ¼å­çº¿
 	vector<Line> gridelines = p->GetGrideLines();
 	for (unsigned i = 0; i < gridelines.size(); i++)
 	{
@@ -86,13 +86,13 @@ void myDisplay(void)
 }
 
 
-// Êó±êµã»÷µÄ»Øµ÷º¯Êı£¬Ä¿µÄÎª»ñÈ¡ÓÃ»§µÄÊó±êµãÊäÈë£¬²¢×÷ÎªÑ°Â·µÄÆğµãºÍÖÕµãÀ´½øĞĞÑ°Â·
-// param £º
-//	buttonÎªGLUT_LEFT_BUTTON»òGLUT_RIGHT_BUTTON·Ö±ğ±íÊ¾×óÓÒ°´¼ü¡£
-//	stateÎª°´¼üµÄ×´Ì¬£¬ÈôÎª°´ÏÂÔòÎªGLUT_DOWN
+// é¼ æ ‡ç‚¹å‡»çš„å›è°ƒå‡½æ•°ï¼Œç›®çš„ä¸ºè·å–ç”¨æˆ·çš„é¼ æ ‡ç‚¹è¾“å…¥ï¼Œå¹¶ä½œä¸ºå¯»è·¯çš„èµ·ç‚¹å’Œç»ˆç‚¹æ¥è¿›è¡Œå¯»è·¯
+// param ï¼š
+//	buttonä¸ºGLUT_LEFT_BUTTONæˆ–GLUT_RIGHT_BUTTONåˆ†åˆ«è¡¨ç¤ºå·¦å³æŒ‰é”®ã€‚
+//	stateä¸ºæŒ‰é”®çš„çŠ¶æ€ï¼Œè‹¥ä¸ºæŒ‰ä¸‹åˆ™ä¸ºGLUT_DOWN
 void myClick(int button, int state, int x, int y)
 {
-	if (state == 1) //Ì§ÆğÊÇ1
+	if (state == 1) //æŠ¬èµ·æ˜¯1
 	{
 		clicknum += 1;
 		int t = clicknum % 3;
@@ -122,12 +122,12 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
-	glutInitWindowPosition(30, 30);  //¶¨Òå´°¿ÚÎ»ÖÃ
-	glutInitWindowSize(1000, 800);  //¶¨Òå´°¿Ú´óĞ¡
-	glutCreateWindow("Ñ°Â·²âÊÔ");
+	glutInitWindowPosition(30, 30);  //å®šä¹‰çª—å£ä½ç½®
+	glutInitWindowSize(1000, 800);  //å®šä¹‰çª—å£å¤§å°
+	glutCreateWindow("å¯»è·¯æµ‹è¯•");
 	//gluOrtho2D(x_mix, x_max, y_mix, y_max)
-	//ÓÃÓÚ½ØÈ¡ÊÀ½ç×ø±êÏµÏàÓ¦ÇøÓò¡£ÔÚÊÀ½ç×ø±êÏµÖĞÒÔ´Ó(x_mix, x_max)µ½(y_mix, y_max)µÄÖ±ÏßÎª¶Ô½ÇÏßµÄ
-	//¾ØĞÎ²¿·Ö½ØÈ¡Í¼Ïñ£¬¸Ã½ØÍ¼¿ÉÒÔ±»ÓÃÓÚÏÔÊ¾¡£
+	//ç”¨äºæˆªå–ä¸–ç•Œåæ ‡ç³»ç›¸åº”åŒºåŸŸã€‚åœ¨ä¸–ç•Œåæ ‡ç³»ä¸­ä»¥ä»(x_mix, x_max)åˆ°(y_mix, y_max)çš„ç›´çº¿ä¸ºå¯¹è§’çº¿çš„
+	//çŸ©å½¢éƒ¨åˆ†æˆªå–å›¾åƒï¼Œè¯¥æˆªå›¾å¯ä»¥è¢«ç”¨äºæ˜¾ç¤ºã€‚
 	gluOrtho2D(0, 1000, 800, 0);
 	glutDisplayFunc(myDisplay);
 	glutMouseFunc(myClick);

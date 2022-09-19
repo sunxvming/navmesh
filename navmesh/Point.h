@@ -1,5 +1,5 @@
 //====================================
-// brief: PointÀà£¬µãµÄ±íÊ¾Àà
+// brief: Pointç±»ï¼Œç‚¹çš„è¡¨ç¤ºç±»
 // author:sunxvming@163.com
 // date:  2019-11-15
 //====================================
@@ -17,7 +17,7 @@ public:
 	Point() { this->x = 0; this -> y = 0; }
 	Point(const Point& p) { this->x = p.x; this->y = p.y; }
 	double Dot(Point p){ return this->x*p.x+this->y*p.y; };
-	bool operator == (const Point p) { return x == p.x&&y == p.y; };//Õâ¸öµØ·½¾ÍÊÇÓÃ==£¬ÒòÎªÃ»ÓÐ¾«¶È¶ªÊ§
+	bool operator == (const Point p) { return x == p.x&&y == p.y; };//è¿™ä¸ªåœ°æ–¹å°±æ˜¯ç”¨==ï¼Œå› ä¸ºæ²¡æœ‰ç²¾åº¦ä¸¢å¤±
 	Point operator - (const Point p) { return Point(this->x-p.x, this->y-p.y); };
 	~Point();
 };
