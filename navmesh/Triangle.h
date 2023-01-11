@@ -8,7 +8,10 @@
 #define NAVMESH_TRIANGLE_H
 
 #include "Point.h"
-class Polygon;
+
+namespace navmesh{
+    class Polygon;
+}
 
 class Triangle
 {
@@ -22,8 +25,8 @@ public:
 	Point rb;
 public:
 	Triangle(int p1, int p2, int p3);
-	void GenExtData(Polygon* p);
-	int Contain(Polygon* p, Point pt);
+	void GenExtData(navmesh::Polygon* p);
+	int Contain(navmesh::Polygon* p, Point pt);
 	virtual ~Triangle();
 };
 

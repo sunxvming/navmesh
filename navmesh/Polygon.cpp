@@ -3,13 +3,17 @@
 // author:sunxvming@163.com
 // date:  2019-11-15
 //====================================
-
+#include <assert.h>
+#include <cstdio>
+#include <algorithm>
 #include "Polygon.h"
+
+using navmesh::Polygon;
 
 Polygon::Polygon(double* pos, int size)
 {
-	_ASSERT(size > 10);
-	_ASSERT(size < MAXPOINT * 2 - 8);
+	assert(size > 10);
+	assert(size < MAXPOINT * 2 - 8);
 	for (int ii = 0; ii < size; ii += 2)
 	{
 		points.push_back(Point(pos[ii], pos[ii + 1]));
@@ -40,7 +44,7 @@ int Polygon::CreateEdge(Hash* eindexs, int triangle, int p1, int p2)
 	}
 	int v = (*eindexs)[k];
 	int t2 = edges[v].triangles[1];
-	_ASSERT(t2 < 0);
+	assert(t2 < 0);
 	edges[v].triangles[1] = triangle;
 	return v;
 }
@@ -185,7 +189,7 @@ int Polygon::FindDT(Grid* grid, int p1, int p2)
 		}
 		d++;
 	}
-	_ASSERT(p3 != -1);
+	assert(p3 != -1);
 	return p3;
 }
 
@@ -220,23 +224,18 @@ bool Polygon::IsIntersect(Grid* grid, int edgepos, int pa1, int p1) {
 bool Polygon::JudgeIsVisible(int pindex1, int pindex2, Grid* grid) {
 	Point p1 = GetPoint(pindex1);
 	Point p2 = GetPoint(pindex2);
+
 	//检查最大最小值合法性
 	Point p0 = points[0];
-	double minx = p0.x, miny = p0.y, maxx = p0.x, maxy = p0.y;
-	for (auto it = points.cbegin() + 1; it != points.cend(); it++)
-	{
-		double x = it->x;
-		double y = it->y;
-		if (x < minx) minx = x;
-		if (x > maxx)maxx = x;
-		if (y < miny) miny = y;
-		if (y > maxy)maxy = y;
-	}
+	double minx = grid->minx,
+		miny = grid->miny,
+		maxx = grid->maxx,
+		maxy = grid->maxy;
+	
 
-	double dx = maxx - minx, dy = maxy - miny;
-	int gride = (int)sqrt(dx * dy / (points.size()));
-	int xnum = (int)ceil(dx / gride);
-	int ynum = (int)ceil(dy / gride);
+	int gride = grid->gride;
+	int xnum = grid->xnum;
+	int ynum = grid->ynum;
 
 	if (p1.x > p2.x) {
 		Point demo = p2;

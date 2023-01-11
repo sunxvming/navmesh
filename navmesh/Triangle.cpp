@@ -7,14 +7,14 @@
 #include "Triangle.h"
 #include"Polygon.h"
 
-Triangle::Triangle(int p1, int p2, int p3) :p1(p1), p2(p2), p3(p3)
+Triangle::Triangle(int p1, int p2, int p3) :p1(p1), p2(p2), p3(p3),edges{ -1,-1,-1 }
 {
-	memset(edges, -1, 3);
+
 }
 
 #define max( a, b ) ((a)>(b)?(a):(b))
 #define min( a, b ) ((a)>(b)?(b):(a))
-void Triangle::GenExtData(Polygon* p)
+void Triangle::GenExtData(navmesh::Polygon* p)
 {
 	Point pt1 = p->GetPoint(p1);
 	Point pt2 = p->GetPoint(p2);
@@ -37,7 +37,7 @@ void Triangle::GenExtData(Polygon* p)
 	rb.x = maxx, rb.y = maxy;
 }
 
-int Triangle::Contain(Polygon* p, Point pt)
+int Triangle::Contain(navmesh::Polygon* p, Point pt)
 {
 	double x = pt.x, y = pt.y;
 	//快速排查

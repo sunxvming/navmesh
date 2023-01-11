@@ -16,6 +16,7 @@
 
 using namespace std;
 
+
 typedef unordered_map<int, int> Hash;
 #define  MAXPOINT 100000 
 #define PIndex(p1, p2) (p1>p2?(p2*MAXPOINT+p1):(p1*MAXPOINT+p2))
@@ -57,6 +58,8 @@ public:
 //====================================
 // 多边形类，三角剖分和寻路逻辑的主要实现在此处
 //====================================
+namespace navmesh{
+
 class Polygon
 {
 public:
@@ -79,11 +82,12 @@ public:
 	Polygon(double* pos, int size);
 	vector<Line> GetLines();
 	vector<Line> GetGrideLines();
-	vector<Point> Polygon::GetCenters();
+	vector<Point> GetCenters();
 	int IsFrist(int p) { return p == 4; }
-	inline int Polygon::FindTriangle(Point p);
-	vector<Point> Polygon::FindPath(Point from, Point to);
+	int FindTriangle(Point p);
+	vector<Point> FindPath(Point from, Point to);
 	virtual ~Polygon();
 };
 
+}
 #endif // NAVMESH_POLYGON_H
