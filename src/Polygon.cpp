@@ -227,10 +227,8 @@ bool Polygon::JudgeIsVisible(int pindex1, int pindex2, Grid* grid) {
 
 	//检查最大最小值合法性
 	Point p0 = points[0];
-	double minx = grid->minx,
-		miny = grid->miny,
-		maxx = grid->maxx,
-		maxy = grid->maxy;
+	double minx = grid->minx;
+	double miny = grid->miny;
 	
 
 	int gride = grid->gride;
@@ -319,7 +317,7 @@ void Polygon::Delaunay()
 	vector<Cell> cells(xnum * ynum);
 	printf("Polygon::Delaunay函数里，grid的边长是 grid.length = %d, xnum = %d,  dy= %f,  ynum = %d \n", gride, xnum, dy, ynum);
 
-	printf("总共有多少个顶点    points.size() = %d, ", points.size());
+	printf("总共有多少个顶点    points.size() = %lld, ", points.size());
 
 	printf("---------minx = %f, miny = %f-------", minx, miny);
 	//把点和边都放到格子里
@@ -644,7 +642,7 @@ vector<Point> Polygon::FindPath(Point from, Point to)
 	//拐点算法
 	int t = 0;
 	int size = es.size();
-	printf("\n\n  es.size()=%d,ts.size()=%d  \n\n", size, ts.size());
+	printf("\n\n  es.size()=%d,ts.size()=%lld  \n\n", size, ts.size());
 	while (t < size)
 	{
 		Point p = *(ways.cend() - 1);  //循环开始点是起点
@@ -664,7 +662,6 @@ vector<Point> Polygon::FindPath(Point from, Point to)
 		int i = t + 1;
 		int t1 = i, t2 = i;
 		//每一次循环就是要找到一个拐点，然后下一次再从这个拐点找下一个拐点
-		bool haspoint = false;
 		for (; i < size; i++)
 		{
 			Edge nxte = edges[es[i]];
@@ -683,7 +680,6 @@ vector<Point> Polygon::FindPath(Point from, Point to)
 				ways.push_back(Point(pp.x + 0, pp.y - 0));
 				t1++;
 				t = nep0 == ep0 ? (i++, t1 + 1) : t1;
-				haspoint = true;
 				break;
 			}
 			else if (isclockwise(line1, np1 - p)) //np1（右点）在line1（右线）的左侧的话，更新line1
@@ -699,7 +695,6 @@ vector<Point> Polygon::FindPath(Point from, Point to)
 				ways.push_back(Point(pp.x + 0, pp.y - 0));
 				t2++;
 				t = nep1 == ep1 ? (i++, t2 + 1) : t2;
-				haspoint = true;
 				break;
 			}
 			else if (!isclockwise(line2, np2 - p))  //np2（左点）不在line2（左线）的左侧的话，更新line2

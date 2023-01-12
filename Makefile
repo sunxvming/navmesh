@@ -3,24 +3,19 @@ OBJ_PATH = objs
 PREFIX_BIN =
 
 
-GLUT_DIR = ./glut/freeglut_mingw/lib/x64
-GLUT_TARGET = libfreeglut_static.a
-GLUT_LIB = $(GLUT_DIR)/$(GLUT_TARGET)
-
-
 CC = gcc
 CPP = g++ -std=c++17
 INCLUDES += -I./ -I./libs/freeglut_mingw/include
-LIBS = $(GLUT_LIB)
 
-LIB_DIRS = -lfreeglut -lopengl32 -lglu32 -L".\libs\freeglut_mingw\lib\x64"  ./libs/freeglut_mingw/bin/x64/freeglut.dll
+
+LIB_DIRS = -lfreeglut -lopengl32 -lglu32 -L".\libs\freeglut_mingw\lib\x64"
 
 G = -g
 CFLAGS :=-Wall  -Wno-unknown-pragmas $(G) 
 LINKFLAGS = 
 
 
-SRCDIR =./navmesh
+SRCDIR =./src
 
 C_SRCDIR = $(SRCDIR)
 C_SOURCES = $(foreach d,$(C_SRCDIR),$(wildcard $(d)/*.c) )
@@ -66,11 +61,10 @@ test:
 	@echo "CC_OBJS: $(CC_OBJS)"
 
 compile:$(C_OBJS) $(CC_OBJS) $(CPP_OBJS)
-	$(CPP)  $^ -o $(TARGET)  $(LINKFLAGS)  ${LIB_DIRS}
-
+	$(CPP)  $^ -o objs/$(TARGET)  $(LINKFLAGS)  ${LIB_DIRS}
+	cp .\libs\freeglut_mingw\bin\x64\freeglut.dll ./objs/freeglut.dll
 clean:
 	rm -rf $(OBJ_PATH)
-	rm  navmesh.exe
 cleand:
 	find ./objs -name *.d | xargs rm -rf
 
@@ -98,7 +92,7 @@ endif
 # $$$$  进程号
 # sed中的变量用 '"包围， 's,\('"$$BASESRC"'\)\.o[ :]*,\objs\/$*.o $@ : ,g'
 $(CPP_DEPEND):$(OBJ_PATH)/%.d:%.cpp
-	BASESRC=`basename $*`;\
+	@BASESRC=`basename $*`;\
 	set -e; rm -f $@; \
 	$(CPP) $(INCLUDES) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\('"$$BASESRC"'\)\.o[ :]*,\objs\/$*.o $@ : ,g' < $@.$$$$ > $@; \

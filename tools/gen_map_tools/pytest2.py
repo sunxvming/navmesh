@@ -4,8 +4,8 @@ from math import pi
 import main
 import navmesh
 
-SCREEN_WIDTH = 2000
-SCREEN_HEIGHT = 1000
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
 #初始化
 pygame.init()
 # 设置主屏幕大小
@@ -37,8 +37,8 @@ while not done:
 
     dx = maxx - minx
     dy = maxy - miny
-    timex = SCREEN_WIDTH / dx
-    timey = SCREEN_HEIGHT / dy
+    timex = SCREEN_WIDTH / dx / 1.1
+    timey = SCREEN_HEIGHT / dy / 1.1
 
 
     for p in pols:

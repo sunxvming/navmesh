@@ -17,7 +17,7 @@ public:
 	int triangles[2];
 	int points[2];
 	Edge(int t1, int t2, int p1, int p2);
-	int IsRestrain(navmesh::Polygon* p);
+	bool IsRestrain(navmesh::Polygon* p);
 	virtual ~Edge();
 };
 

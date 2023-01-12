@@ -16,14 +16,14 @@ Edge::Edge(int t1, int t2, int p1, int p2)
 	points[1] = p2;
 }
 
-int Edge::IsRestrain(navmesh::Polygon* p)
+bool Edge::IsRestrain(navmesh::Polygon* p)
 {
 	int p1 = points[0];
 	int p2 = points[1];
 	int dp = p2 - p1;
 	if (dp == 1 || dp == -1) return 1;
 	if (p1 && p2) return 0;
-	return p1 + p2 == p->points.size() - 1;
+	return std::size_t(p1 + p2) == p->points.size() - 1;
 }
 
 Edge::~Edge()

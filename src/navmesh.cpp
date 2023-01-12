@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
 	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
 	glutInitWindowPosition(30, 30);  //定义窗口位置
 	glutInitWindowSize(1000, 800);  //定义窗口大小
-	glutCreateWindow("aabc寻路测试");
+	glutCreateWindow("寻路测试");
 	//gluOrtho2D(x_mix, x_max, y_mix, y_max)
 	//用于截取世界坐标系相应区域。在世界坐标系中以从(x_mix, x_max)到(y_mix, y_max)的直线为对角线的
 	//矩形部分截取图像，该截图可以被用于显示。
