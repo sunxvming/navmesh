@@ -5,6 +5,7 @@
 //====================================
 #include <cstdio>
 #include <stdio.h>
+#include <memory>
 #include <GL/glut.h>
 #include "Polygon.h"
 
@@ -23,7 +24,7 @@ static void DrawLines() {
 	//double pos[] = { 150, 100, 300, 100, 350, 150, 400, 100, 550, 100, 600, 150, 450, 450, 200, 500, 200, 350, 50, 250 };
 	//double pos[] = {50, 150,150,100,200,100,250,200, 300, 150,250,250,200,250,150,200,150,150,50,250};
 	vector<Point> ways;
-	navmesh::Polygon* p = new navmesh::Polygon(pos, sizeof(pos)/sizeof(double));
+	auto p = make_shared<navmesh::Polygon>(pos, sizeof(pos)/sizeof(double));
 	//前一个Point是起点，后一个Point是终点。
 	//（0，0）在左上角
 	if (fromx > 0 && fromy > 0 && tox > 0 && toy > 0)
@@ -124,7 +125,7 @@ int main(int argc, char *argv[])
 	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
 	glutInitWindowPosition(30, 30);  //定义窗口位置
 	glutInitWindowSize(1000, 800);  //定义窗口大小
-	glutCreateWindow("寻路测试");
+	glutCreateWindow("navmesh test");
 	//gluOrtho2D(x_mix, x_max, y_mix, y_max)
 	//用于截取世界坐标系相应区域。在世界坐标系中以从(x_mix, x_max)到(y_mix, y_max)的直线为对角线的
 	//矩形部分截取图像，该截图可以被用于显示。

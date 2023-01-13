@@ -18,7 +18,7 @@ done = False
 #创建时钟对象
 clock = pygame.time.Clock()
 
-vertices, triangles = main.get_obj_info('level1.obj','')
+vertices, triangles = main.get_obj_info('./map/map1.obj','')
 nav = navmesh.NavMash(vertices, triangles)
 pols = nav.gen_navmesh()
 

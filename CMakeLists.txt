@@ -13,7 +13,7 @@ SET(GLUT_DIR ${ROOT_DIR}/libs/freeglut_msvc)
 
 
 # 编译那些源码
-file(GLOB SOURCES "navmesh/*.cpp")
+file(GLOB SOURCES "src/*.cpp")
 
 
 # 编译目标
@@ -22,7 +22,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # 包含路径
 target_include_directories(${PROJECT_NAME}
     PUBLIC 
-        ${ROOT_DIR}/glut/freeglut_msvc/include
+        ${ROOT_DIR}/libs/freeglut_msvc/include
 )
 
 # 添加外部静态

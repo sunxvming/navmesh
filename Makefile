@@ -1,5 +1,5 @@
 TARGET = navmesh
-OBJ_PATH = objs
+OBJ_PATH = bin
 PREFIX_BIN =
 
 
@@ -61,12 +61,12 @@ test:
 	@echo "CC_OBJS: $(CC_OBJS)"
 
 compile:$(C_OBJS) $(CC_OBJS) $(CPP_OBJS)
-	$(CPP)  $^ -o objs/$(TARGET)  $(LINKFLAGS)  ${LIB_DIRS}
-	cp .\libs\freeglut_mingw\bin\x64\freeglut.dll ./objs/freeglut.dll
+	$(CPP)  $^ -o bin/$(TARGET)  $(LINKFLAGS)  ${LIB_DIRS}
+	cp .\libs\freeglut_mingw\bin\x64\freeglut.dll ./bin/freeglut.dll
 clean:
 	rm -rf $(OBJ_PATH)
 cleand:
-	find ./objs -name *.d | xargs rm -rf
+	find ./bin -name *.d | xargs rm -rf
 
 
 cleanall:subdirs_clean
@@ -90,11 +90,11 @@ endif
 # $@ depend
 # $$xx  变量要用两个$$表示
 # $$$$  进程号
-# sed中的变量用 '"包围， 's,\('"$$BASESRC"'\)\.o[ :]*,\objs\/$*.o $@ : ,g'
+# sed中的变量用 '"包围， 's,\('"$$BASESRC"'\)\.o[ :]*,\bin\/$*.o $@ : ,g'
 $(CPP_DEPEND):$(OBJ_PATH)/%.d:%.cpp
 	@BASESRC=`basename $*`;\
 	set -e; rm -f $@; \
 	$(CPP) $(INCLUDES) -MM $(CPPFLAGS) $< > $@.$$$$; \
-	sed 's,\('"$$BASESRC"'\)\.o[ :]*,\objs\/$*.o $@ : ,g' < $@.$$$$ > $@; \
+	sed 's,\('"$$BASESRC"'\)\.o[ :]*,\bin\/$*.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
 

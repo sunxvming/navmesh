@@ -34,5 +34,3 @@
 /build
 /bin
 .vscode
-/objs
-navmesh.exe
