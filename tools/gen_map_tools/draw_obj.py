@@ -1,11 +1,36 @@
 
 import pygame
+import getopt
+import sys
+import os
 from math import pi
 import main
 import navmesh
 
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
+
+def usage():
+    print("Usage: {} -f filename.obj".format(os.path.basename(sys.argv[0])))
+
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "hf:", ["help", "file="])
+
+except getopt.GetoptError:
+    usage()
+    sys.exit(2)
+
+infile = ""
+
+for o, a in opts:
+    if o in ("-h", "--help"):
+        usage()
+        sys.exit()
+
+    elif o in ("-f", "--file"):
+        infile = a
+
 #初始化
 pygame.init()
 # 设置主屏幕大小
@@ -18,7 +43,7 @@ done = False
 #创建时钟对象
 clock = pygame.time.Clock()
 
-vertices, triangles = main.get_obj_info('./map/map1.obj','')
+vertices, triangles = main.get_obj_info(infile,'')
 nav = navmesh.NavMash(vertices, triangles)
 pols = nav.gen_navmesh()
 
