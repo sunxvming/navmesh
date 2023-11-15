@@ -9,8 +9,9 @@
 
 #include "Point.h"
 
-namespace navmesh{
-    class Polygon;
+namespace navmesh
+{
+	class Polygon;
 }
 
 class Triangle
@@ -20,13 +21,15 @@ public:
 	int p2;
 	int p3;
 	int edges[3];
-	Point icenter;//重心
+	Point icenter; // 重心
 	Point lt;
 	Point rb;
+	bool isPath;
+
 public:
 	Triangle(int p1, int p2, int p3);
-	void GenExtData(navmesh::Polygon* p);
-	int Contain(navmesh::Polygon* p, Point pt);
+	void GenExtData(navmesh::Polygon *p);
+	int Contain(navmesh::Polygon *p, Point pt);
 	virtual ~Triangle();
 };
 

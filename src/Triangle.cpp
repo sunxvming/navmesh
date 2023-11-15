@@ -5,16 +5,15 @@
 //====================================
 
 #include "Triangle.h"
-#include"Polygon.h"
+#include "Polygon.h"
 
-Triangle::Triangle(int p1, int p2, int p3) :p1(p1), p2(p2), p3(p3),edges{ -1,-1,-1 }
+Triangle::Triangle(int p1, int p2, int p3) : p1(p1), p2(p2), p3(p3), edges{-1, -1, -1}, isPath(false)
 {
-
 }
 
-#define max( a, b ) ((a)>(b)?(a):(b))
-#define min( a, b ) ((a)>(b)?(b):(a))
-void Triangle::GenExtData(navmesh::Polygon* p)
+#define max(a, b) ((a) > (b) ? (a) : (b))
+#define min(a, b) ((a) > (b) ? (b) : (a))
+void Triangle::GenExtData(navmesh::Polygon *p)
 {
 	Point pt1 = p->GetPoint(p1);
 	Point pt2 = p->GetPoint(p2);
@@ -28,23 +27,31 @@ void Triangle::GenExtData(navmesh::Polygon* p)
 	double minx = min(pt1.x, pt2.x);
 	double miny = min(pt1.y, pt2.y);
 
-	if (pt3.x > maxx) maxx = pt3.x;
-	if (pt3.y > maxy) maxy = pt3.y;
-	if (pt3.x < minx) minx = pt3.x;
-	if (pt3.y < miny) miny = pt3.y;
+	if (pt3.x > maxx)
+		maxx = pt3.x;
+	if (pt3.y > maxy)
+		maxy = pt3.y;
+	if (pt3.x < minx)
+		minx = pt3.x;
+	if (pt3.y < miny)
+		miny = pt3.y;
 
 	lt.x = minx, lt.y = miny;
 	rb.x = maxx, rb.y = maxy;
 }
 
-int Triangle::Contain(navmesh::Polygon* p, Point pt)
+int Triangle::Contain(navmesh::Polygon *p, Point pt)
 {
 	double x = pt.x, y = pt.y;
-	//快速排查
-	if (x < lt.x) return 0;
-	if (x > rb.x) return 0;
-	if (y < lt.y) return 0;
-	if (y > rb.y) return 0;
+	// 快速排查
+	if (x < lt.x)
+		return 0;
+	if (x > rb.x)
+		return 0;
+	if (y < lt.y)
+		return 0;
+	if (y > rb.y)
+		return 0;
 
 	Point pt1 = p->GetPoint(p1);
 	Point pt2 = p->GetPoint(p2);
@@ -54,7 +61,7 @@ int Triangle::Contain(navmesh::Polygon* p, Point pt)
 	Point v1 = pt2 - pt1;
 	Point v2 = pt - pt1;
 
-	//P = A +  u * (C – A) + v * (B - A)  满足 u + v <=1 u >= 0 v >= 0
+	// P = A +  u * (C – A) + v * (B - A)  满足 u + v <=1 u >= 0 v >= 0
 	double dot00 = v0.Dot(v0);
 	double dot01 = v0.Dot(v1);
 	double dot02 = v0.Dot(v2);
