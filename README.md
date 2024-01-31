@@ -15,34 +15,53 @@
 对于寻路地图文件，我们需要对其进行三角剖分，以便后续的寻路算法可以使用。
 
 ### 3.网格寻路
-网格寻路是一种基于网格的寻路算法，它的基本思想是：首先将地图划分为一个个的网格，然后在网格中寻找一条从起点到终点的路径。网格寻路的算法有很多种，比如A*、Dijkstra、BFS、DFS等等，通常可以选择A*算法来实现。
+网格寻路是一种基于网格的寻路算法，它的基本思想是：首先将地图划分为一个个的网格，然后在网格中寻找一条从起点到终点的路径。网格寻路的算法有很多种，比如A*、Dijkstra、BFS、DFS等等，通常可以选择`A*`算法来实现。
 
 ### 4.根据寻路的网格生成最终的路径
 在网格寻路的过程中，我们只是找到了一条从起点到终点的网格路径，但是这条路径并不是我们想要的最终路径，因为这条路径是由网格组成的，而我们需要的是由顶点组成的路径。所以我们需要根据网格路径生成最终的路径。这个生成算法可以使用拐点算法来实现。
 
-
-## 编译说明
-此工程的编译运行环境为windows，需要你的电脑的开发环境有cmake、Visual Studio或make、MinGW
+## 编译方式说明
+此工程的编译运行环境为windows，需要你的电脑的开发环境有cmake、Visual Studio或make、MinGW 
 ### 一、cmake+visual studio编译
-1. 在cmake中设置源码目录和build目录
+1.在cmake中设置源码目录和build目录
 ![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113115226.png)
-2. 设置visual studio的版本，和32位应用程序
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113115835.png)
-3. 点击生成vs工程，生成的目录为`build`目录，用vs打开生成的工程并运行，可执行程序会生成到当前项目根目录的`bin`目录下
+
+2.点击`configure`设置visual studio的版本，和64位应用程序
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131153911.png)
+
+3.点击`Generrate`生成vs工程，生成的目录为`build`目录，用vs打开生成的工程并运行，可执行程序会生成到当前项目根目录的`bin`目录下
+
 
 ### 二、mingw+make+gcc编译
 在项目根目录执行`make`命令即可，可执行程序同样会生成到`bin`目录下
 
+### 三、VScode+cmake插件编译
+1.选择编译套件
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165800.png)
+
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165840.png)
+
+2.编译
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165915.png)
+
+3.运行
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165954.png)
+
+
+## 程序运行说明
+
 编译成功后再运行你会看到如下的程序运行界面：
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113121644.png)
+![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131170422.png)
+
 
 界面说明:
 * 红色的线是平面多边形，你可以把它看成游戏中的地型。
 * 绿色的线表示经三角剖分后构成的线
 * 蓝色的线代表寻路的路径
+* 灰色的格子路径规划所跨越的格子
 
 操作说明：
-程序运行时在窗口点击第一下为寻路的起点，再点击第二下为寻路的终点。点击第三下会把之前的路径清空。
+- 程序运行时在窗口点击第一下为寻路的起点，再点击第二下为寻路的终点。点击第三下会把之前的路径清空。
 
 
 ## 地图文件的生成
@@ -71,18 +90,18 @@
 这些都可以在网上查的到，在俺的小demo中应该也很容易找的到的
 
 * 平面多边形三角剖分算法(Delaunay剖分)
-    + 多边形用什么数据结构来表示
-    + 各种几何图形用什么数据结构来表示
-    + 如何生成网格以及附带数据
-    + 如何确定一个DT点
-    + 如何遍历整个多边形来完成三角剖分
+    + 多边形用什么数据结构来表示
+    + 各种几何图形用什么数据结构来表示
+    + 如何生成网格以及附带数据
+    + 如何确定一个DT点
+    + 如何遍历整个多边形来完成三角剖分
 * 寻路算法
 * 寻路拐点算法
 * 判断两条线段是否相交
 * 判断点是否在三角形中
 * 判断点在向量的那一侧
 * 已知三点求三点的夹角
-
+  
 
 ## Delaunay剖分是啥？
 
