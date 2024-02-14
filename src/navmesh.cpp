@@ -40,7 +40,7 @@ static void DrawMap()
 	}
 	glEnd();
 
-	// draw triangle than path has been found
+	// draw triangle that path has been found
 	for (const auto &tri : polygon->triangles)
 	{
 

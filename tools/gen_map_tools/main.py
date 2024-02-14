@@ -16,7 +16,7 @@ def usage():
 
 
 
-def get_obj_info(infile, outfile):
+def get_obj_info(infile):
     if not parse_obj.file_exists(infile):
         print("Couldn't find [%s]" % infile)
         return
@@ -58,6 +58,6 @@ if __name__ == "__main__":
         usage()
         sys.exit(2)
 
-    vertices, triangles = get_obj_info(infile, outfile)
+    vertices, triangles = get_obj_info(infile)
     mesh = navmesh.NavMash(vertices, triangles)
     mesh.gen_navmesh_file(outfile)
