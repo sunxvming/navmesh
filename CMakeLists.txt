@@ -26,11 +26,7 @@ if(WIN32)
         message(FATAL_ERROR "Build on WIN32. Using an unknown compiler.")
     endif()
 
-    # 包含路径
-    target_include_directories(${PROJECT_NAME}
-        PUBLIC
-        ${ROOT_DIR}/libs/freeglut_msvc/include
-    )
+
 
 elseif(LINUX)
     message("Build on LINUX.")
@@ -56,14 +52,20 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 set(EXECUTABLE_OUTPUT_PATH ${ROOT_DIR}/bin)
 
 if(WIN32)
+    # 包含路径
+    target_include_directories(${PROJECT_NAME}
+        PUBLIC
+        ${ROOT_DIR}/libs/freeglut_msvc/include
+    )
+
     target_link_libraries(${PROJECT_NAME} freeglut opengl32 glu32) # 添加freeglut.lib
 
     # 复制动态库到执行目录
     if(MSVC)
-    file(COPY ${GLUT_DIR}/bin/x64/freeglut.dll
-        DESTINATION ${EXECUTABLE_OUTPUT_PATH}/Release)
-    file(COPY ${GLUT_DIR}/bin/x64/freeglut.dll
-        DESTINATION ${EXECUTABLE_OUTPUT_PATH}/Debug)
+        file(COPY ${GLUT_DIR}/bin/x64/freeglut.dll
+            DESTINATION ${EXECUTABLE_OUTPUT_PATH}/Release)
+        file(COPY ${GLUT_DIR}/bin/x64/freeglut.dll
+            DESTINATION ${EXECUTABLE_OUTPUT_PATH}/Debug)
     elseif(MINGW)
         file(COPY ${GLUT_DIR}/bin/x64/freeglut.dll
             DESTINATION ${EXECUTABLE_OUTPUT_PATH})
