@@ -30,8 +30,12 @@
 在网格寻路的过程中，我们只是找到了一条从起点到终点的网格路径，但是这条路径并不是我们想要的最终路径，因为这条路径是由网格组成的，而我们需要的是由顶点组成的路径。所以我们需要根据网格路径生成最终的路径。这种算法通常称为路径的二次优化算法。本工程使用拐点算法来实现。
 
 ## 编译方式说明
-此工程的编译运行环境为windows，需要你的电脑的开发环境有cmake、Visual Studio或make、MinGW 
-### 一、cmake+visual studio编译
+此工程可以在Windows 或者 Linux 上编译
+
+### Windows
+需要你的电脑的开发环境有cmake、Visual Studio或make、MinGW
+
+#### 一、cmake+visual studio编译
 1.在cmake中设置源码目录和build目录
 ![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113115226.png)
 
@@ -41,10 +45,10 @@
 3.点击`Generrate`生成vs工程，生成的目录为`build`目录，用vs打开生成的工程并运行，可执行程序会生成到当前项目根目录的`bin`目录下
 
 
-### 二、mingw+make+gcc编译
+#### 二、mingw+make+gcc编译
 在项目根目录执行`make`命令即可，可执行程序同样会生成到`bin`目录下
 
-### 三、VScode+cmake插件编译
+#### 三、VScode+cmake插件编译
 1.选择编译套件
 ![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165800.png)
 
@@ -55,6 +59,25 @@
 
 3.运行
 ![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165954.png)
+
+
+### Linux
+需要系统安装好 freeglut 和 OpenGL 库
+
+ubuntu 系统使用如下命令
+
+`sudo apt install freeglut3-dev`
+
+进入项目目录中 依次执行下面的命令
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
+
+可执行程序同样会生成到`bin`目录下
 
 
 ## 程序运行说明
