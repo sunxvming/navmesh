@@ -19,7 +19,7 @@
 - **三角形网格**：适用于复杂地形，节省空间，但实现稍复杂些。
 
 如何你对正方形网格格栅化感兴趣的话，可以看一下[俺的github](https://github.com/sunxvming)上的另一个[路径规划的工程](https://github.com/sunxvming/pathplan)，其中的`pathplan-gird`目录下的程序用的便是正方形网格，程序运行的截图如下：
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240214150332.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240214150332.png)
 
 ### 3.网格寻路
 网格寻路是一种基于网格的寻路算法，它的基本思想是：首先将地图划分为一个个的网格，然后在网格中寻找一条从起点到终点的路径。网格寻路的算法有很多种，比如`A*`、`Dijkstra`、`BFS`、`DFS`等等，通常可以选择`A*`算法来实现。
@@ -33,10 +33,10 @@
 此工程的编译运行环境为windows，需要你的电脑的开发环境有cmake、Visual Studio或make、MinGW 
 ### 一、cmake+visual studio编译
 1.在cmake中设置源码目录和build目录
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113115226.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20230113115226.png)
 
 2.点击`configure`设置visual studio的版本，和64位应用程序
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131153911.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131153911.png)
 
 3.点击`Generrate`生成vs工程，生成的目录为`build`目录，用vs打开生成的工程并运行，可执行程序会生成到当前项目根目录的`bin`目录下
 
@@ -46,21 +46,21 @@
 
 ### 三、VScode+cmake插件编译
 1.选择编译套件
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165800.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131165800.png)
 
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165840.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131165840.png)
 
 2.编译
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165915.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131165915.png)
 
 3.运行
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131165954.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131165954.png)
 
 
 ## 程序运行说明
 
 编译成功后再运行你会看到如下的程序运行界面：
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20240131170422.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20240131170422.png)
 
 
 界面说明:
@@ -85,12 +85,12 @@
 
 下面的截图是`gen_map_tools/map`目录下的两个地图的例子
 其中红色的线为外轮廓，绿色的线为内轮廓。
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113205512.png)
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113203242.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20230113205512.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20230113203242.png)
 
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113203022.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20230113203022.png)
 
-![image.png](https://sxm-upload.oss-cn-beijing.aliyuncs.com/imgs/20230113203058.png)
+![image.png](https://github.com/sunxvming/navmesh/tree/master/img/20230113203058.png)
 
 具体的说明和使用方法请参考`gen_map_tools`目录下的说明文档。
 
