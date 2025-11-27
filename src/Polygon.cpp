@@ -750,6 +750,13 @@ vector<Point> Polygon::FindPath(Point from, Point to)
 				ways.push_back(GetPoint(ep_l));
 				t = t_l;
 			}
+			else
+			{
+				// 终点刚好在当前漏斗中间，可以提前结束漏斗算法
+				ways.push_back(to);
+				break;
+			}
+
 			if (t >= size - 1) // //终点在中间
 			{
 				ways.push_back(to);
